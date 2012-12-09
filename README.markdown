@@ -31,12 +31,13 @@ Then create your crawler:
 var myCrawler = new Crawler("www.example.com");
 ```
 
-Nonstandard port? HTTPS? Want to start archiving a specific path? No problem:
+Nonstandard port? HTTPS? Non latin encoding? Want to start archiving a specific path? No problem:
 
 ```javascript
 myCrawler.initialPath = "/archive";
 myCrawler.initialPort = 8080;
 myCrawler.initialProtocol = "https";
+myCrawler.encoding = "windows-1251";
 
 // Or:
 var myCrawler = new Crawler("www.example.com","/archive",8080);
