@@ -10,6 +10,7 @@ Simplecrawler is designed to provide the most basic possible API for crawling we
 * Has a flexible queue system which can be frozen to disk and defrosted
 * Provides basic statistics on network performance
 * Uses buffers for fetching and managing data, preserving binary data (except when discovering links)
+* Include encoding support
 
 ### Installation
 
