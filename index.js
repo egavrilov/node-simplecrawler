@@ -9,12 +9,17 @@ var Cache = require("./cache.js").Cache;
 var EventEmitter = require('events').EventEmitter;
 var http = require("http"),
 	https = require("https");
+var Iconv = require('iconv').Iconv;
 
 // Crawler Constructor
 var Crawler = function(host,initialPath,initialPort,interval) {
 	// SETTINGS TO STUFF WITH (not here! Do it when you create a `new Crawler()`)
 	// Domain to crawl
 	this.host				= host || "";
+	
+	//For non-latin characters someone need to encode parsed document;
+	//Default UTF8 can be changed in Your crawler.encoding option
+	this.encoding		= 'utf-8';
 
 	// Gotta start crawling *somewhere*
 	this.initialPath		= initialPath || "/";
@@ -473,7 +478,13 @@ var Crawler = function(host,initialPath,initialPort,interval) {
 			function processReceivedData() {
 				if (!queueItem.fetched) {
 					timeDataReceived = (new Date().getTime());
-
+					
+					//Change encoding
+		                    if ((crawler.encoding.toLowerCase()) != ('utf-8'||'utf8')) {
+		                        var iconv = new Iconv(crawler.encoding, 'utf8//IGNORE');
+		                        responseBuffer = new Buffer(responseBuffer, 'binary');
+		                        responseBuffer = iconv.convert(responseBuffer).toString();
+		                    }
 					queueItem.fetched = true;
 					queueItem.status = "downloaded";
 					queueItem.stateData.downloadTime = (timeDataReceived - timeHeadersReceived);
