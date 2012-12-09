@@ -12,12 +12,6 @@ Simplecrawler is designed to provide the most basic possible API for crawling we
 * Uses buffers for fetching and managing data, preserving binary data (except when discovering links)
 * Include encoding support
 
-### Installation
-
-```
-npm install simplecrawler
-```
-
 ### Getting Started
 
 Creating a new crawler is very simple. First you'll need to include it:
