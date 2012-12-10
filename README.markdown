@@ -12,6 +12,13 @@ Simplecrawler is designed to provide the most basic possible API for crawling we
 * Uses buffers for fetching and managing data, preserving binary data (except when discovering links)
 * Include encoding support
 
+
+### Installation
+
+```
+npm install simplecrawler
+```
+
 ### Getting Started
 
 Creating a new crawler is very simple. First you'll need to include it:
@@ -26,7 +33,7 @@ Then create your crawler:
 var myCrawler = new Crawler("www.example.com");
 ```
 
-Nonstandard port? HTTPS? Non latin encoding? Want to start archiving a specific path? No problem:
+Nonstandard port? HTTPS? Non-latin encoding? Want to start archiving a specific path? No problem:
 
 ```javascript
 myCrawler.initialPath = "/archive";
@@ -134,6 +141,7 @@ Here's a complete list of what you can stuff with at this stage:
 * `crawler.needsAuth` - Flag to specify if the domain you are hitting requires basic authentication
 * `crawler.authUser` - Username provdied for needsAuth flag
 * `crawler.authPass` - Passowrd provided for needsAuth flag
+* `crawler.encoding` - Encoding of data
 
 ### The Simplecrawler Queue
 
